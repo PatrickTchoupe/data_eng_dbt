@@ -4,3 +4,8 @@ target/
 dbt_packages/
 logs/
 dbt_internal_packages/
+.venv311/
+*.p8
+*.pem
+.env
+.user.yml

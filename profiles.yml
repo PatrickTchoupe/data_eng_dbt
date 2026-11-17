@@ -1,0 +1,14 @@
+data_eng_dbt:              # doit correspondre à "profile:" dans dbt_project.yml
+  target: dev              # environnement utilisé par défaut
+  outputs:
+    dev:
+      type: snowflake
+      account: ZRZXTAD-TD79215
+      user: inutilec8@gmail.com
+      authenticator: snowflake_jwt
+      private_key_path: "{{ env_var('SNOWFLAKE_PRIVATE_KEY_PATH') }}"
+      role: ACCOUNTADMIN
+      warehouse: COMPUTE_WH      # remplace par le nom vu à l'étape 2
+      database: DATA_ENG_DBT
+      schema: DBT_DEV
+      threads: 4
