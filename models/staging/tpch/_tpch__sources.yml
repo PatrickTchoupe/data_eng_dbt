@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: tpch
+    database: DATA_ENG_DBT
+    schema: RAW
+    loaded_at_field: _loaded_at
+    freshness:
+      warn_after: {count: 24, period: hour}
+    tables:
+      - name: orders
+        columns:
+          - name: o_orderkey
+            data_tests: [unique, not_null]
+      - name: lineitem
+      - name: customer
+      - name: nation
+      - name: region
+      - name: part
+      - name: supplier

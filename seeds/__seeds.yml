@@ -1,0 +1,68 @@
+version: 2
+
+seeds:
+  - name: countries
+    description: "Référentiel des pays"
+    config:
+      column_types:
+        country_code: varchar(2)
+    columns:
+      - name: country_code
+        data_tests: [unique, not_null]
+
+  - name: order_status
+    description: "Correspondance code → libellé des statuts de commande"
+    config:
+      column_types:
+        status_code: varchar(1)
+        is_final: boolean
+    columns:
+      - name: status_code
+        data_tests: [unique, not_null]
+
+  - name: customers
+    config:
+      column_types:
+        customer_id: integer
+        signup_date: date
+    columns:
+      - name: customer_id
+        data_tests: [unique, not_null]
+      - name: country_code
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('countries')
+                field: country_code
+
+  - name: products
+    config:
+      column_types:
+        product_id: integer
+        unit_price: number(10,2)
+    columns:
+      - name: product_id
+        data_tests: [unique, not_null]
+
+  - name: orders
+    config:
+      column_types:
+        order_id: integer
+        customer_id: integer
+        product_id: integer
+        quantity: integer
+        order_date: date
+    columns:
+      - name: order_id
+        data_tests: [unique, not_null]
+      - name: customer_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('customers')
+                field: customer_id
+      - name: status_code
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['P', 'S', 'D', 'C']

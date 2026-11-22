@@ -1,0 +1,5 @@
+status_code,status_label,is_final
+P,Pending,false
+S,Sent,false
+D,Delivered,true
+C,Cancelled,true

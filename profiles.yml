@@ -1,5 +1,5 @@
-data_eng_dbt:              # doit correspondre à "profile:" dans dbt_project.yml
-  target: dev              # environnement utilisé par défaut
+data_eng_dbt:              
+  target: dev              
   outputs:
     dev:
       type: snowflake
@@ -8,7 +8,7 @@ data_eng_dbt:              # doit correspondre à "profile:" dans dbt_project.ym
       authenticator: snowflake_jwt
       private_key_path: "{{ env_var('SNOWFLAKE_PRIVATE_KEY_PATH') }}"
       role: SCHEMA_CREATOR
-      warehouse: COMPUTE_WH      # remplace par le nom vu à l'étape 2
+      warehouse: COMPUTE_WH 
       database: DATA_ENG_DBT
       schema: DBT_DEV
       threads: 4
