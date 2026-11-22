@@ -2,7 +2,6 @@ version: 2
 
 sources:
   - name: tpch
-    database: DATA_ENG_DBT
     schema: RAW
     loaded_at_field: _loaded_at
     freshness:

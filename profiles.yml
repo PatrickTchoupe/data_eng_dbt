@@ -1,14 +1,8 @@
-data_eng_dbt:              
-  target: dev              
+data_eng_dbt:
+  target: dev
   outputs:
     dev:
-      type: snowflake
-      account: ZRZXTAD-TD79215
-      user: inutilec8@gmail.com
-      authenticator: snowflake_jwt
-      private_key_path: "{{ env_var('SNOWFLAKE_PRIVATE_KEY_PATH') }}"
-      role: SCHEMA_CREATOR
-      warehouse: COMPUTE_WH 
-      database: DATA_ENG_DBT
-      schema: DBT_DEV
+      type: duckdb
+      path: data_eng_dbt.duckdb   # le fichier de base, créé à la racine du projet
+      schema: dbt_dev
       threads: 4

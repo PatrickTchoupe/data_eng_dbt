@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: int_order_items
+    description: "Une ligne par ligne de commande, avec montants brut, remise et net"
+    data_tests:
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "net_amount <= gross_amount"
+    columns:
+      - name: order_item_key
+        data_tests: [unique, not_null]

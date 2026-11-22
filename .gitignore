@@ -9,3 +9,5 @@ dbt_internal_packages/
 *.pem
 .env
 .user.yml
+*.duckdb
+*.duckdb.wal
